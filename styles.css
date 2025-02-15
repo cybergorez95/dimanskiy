@@ -1,0 +1,367 @@
+/* Общие настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Основные цвета */
+:root {
+    --primary-color: #003366; /* Глубокий синий */
+    --accent-color: #FF4500;  /* Красный */
+}
+
+/* Главный блок */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), #001a33);
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.slogan {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.hero .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.hero .btn:hover {
+    background-color: #ddd;
+}
+
+/* Разделы */
+.section {
+    padding: 50px 0;
+    background-color: #fff;
+}
+
+.section:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.group-list,
+.psychologist-list,
+.therapy-cards,
+.review-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.group-item,
+.psychologist-item,
+.therapy-card,
+.review-item {
+    flex: 1 1 calc(33% - 20px);
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.group-item p,
+.psychologist-item p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.psychologist-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.therapy-card i {
+    font-size: 2em;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.review-item blockquote {
+    font-style: italic;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.review-item cite {
+    display: block;
+    font-style: normal;
+    color: var(--primary-color);
+}
+
+/* Форма записи */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #002a52;
+}
+
+/* Надпись "Как записаться" */
+#signup h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* Модальное окно */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--accent-color);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .group-item,
+    .psychologist-item,
+    .therapy-card,
+    .review-item {
+        flex: 1 1 100%;
+    }
+}
+
+/* Стиль для синих заголовков */
+.blue-title {
+    color: var(--primary-color); /* Глубокий синий */
+}
+
+/* Стиль для красных заголовков */
+.red-title {
+    color: var(--accent-color); /* Красный */
+}
+
+/* Красный цвет для заголовка "Возвращение" */
+.hero h1 {
+    color: var(--accent-color); /* Красный */
+}
+
+/* Кнопка "Записаться на терапию" в главном блоке */
+.hero .btn {
+    background-color: var(--accent-color); /* Красный */
+    color: white;
+}
+
+/* Кнопка "Записаться" в разделе "Группы поддержки" */
+.group-item .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color); /* Красный */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold; /* Добавляем жирность для лучшего восприятия */
+}
+
+/* Блоки групп поддержки */
+.group-item {
+    flex: 1 1 calc(33% - 20px); /* Занимают 1/3 строки с отступами */
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center; /* Центрируем содержимое по горизонтали */
+    display: flex; /* Используем flexbox */
+    flex-direction: column; /* Размещаем содержимое вертикально */
+    height: 250px; /* Фиксированная высота для всех блоков */
+    justify-content: space-between; /* Распределяем контент равномерно */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    z-index: -1;
+    transform: scale(1.1); /* Эффект параллакса */
+}
+
+/* Адаптивность кнопок */
+@media (max-width: 768px) {
+    .group-item .btn {
+        max-width: 90%; /* На мобильных устройствах увеличим ширину до 90% */
+        font-size: 12px; /* Уменьшим размер текста для лучшей адаптивности */
+        padding: 8px 12px; /* Уменьшим внутренние отступы */
+    }
+}
+
+/* Обертка для социальных кнопок */
+.social-links {
+    display: flex; /* Используем flexbox для центрирования */
+    justify-content: center; /* Центрируем по горизонтали */
+    gap: 20px; /* Добавляем отступы между кнопками */
+    margin-top: 20px; /* Отступ сверху для лучшего восприятия */
+}
+
+/* Стили для каждой социальной кнопки */
+.social-btn {
+    display: inline-flex; /* Блок圆形 кнопки */
+    align-items: center; /* Выравниваем содержимое по центру */
+    justify-content: center; /* Выравниваем содержимое по центру */
+    width: 50px; /* Фиксированный размер */
+    height: 50px; /* Фиксированный размер */
+    background-color: var(--accent-color); /* Красный цвет */
+    color: white; /* Белый текст */
+    border-radius: 50%; /* Создаем круглую форму */
+    text-decoration: none; /* Убираем подчеркивание ссылки */
+    font-size: 1.5em; /* Размер иконки */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Добавляем анимацию */
+}
+
+/* Эффект при наведении */
+.social-btn:hover {
+    transform: scale(1.1); /* Легкое увеличение при наведении */
+    background-color: var(--primary-color); /* Меняем цвет на синий */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+
+/* Кнопка "Записаться" */
+.group-item .btn {
+    display: inline-block;
+    padding: 10px 15px; /* Уменьшим внутренние отступы */
+    font-size: 14px; /* Уменьшим размер текста */
+    background-color: var(--accent-color); /* Красный */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    margin-top: auto; /* Отправляем кнопку вниз */
+    max-width: 80%; /* Ограничиваем ширину кнопки (80% от родительского блока) */
+    margin-left: auto; /* Центрируем по горизонтали */
+    margin-right: auto; /* Центрируем по горизонтали */
+    display: block; /* Сделаем кнопку блочным элементом */
+}
+
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 5px;
+    background: var(--accent-color);
+    z-index: 1000;
+}
+
+.group-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.group-item:hover {
+    transform: scale(1.05); /* Немного увеличиваем размер */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+
+/* Эффект при наведении на кнопку */
+.group-item .btn:hover {
+    background-color: var(--primary-color); /* Синий */
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+
