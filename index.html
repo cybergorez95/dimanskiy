@@ -6,15 +6,59 @@
     <title>Возвращение — Психологическая поддержка</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .google-form-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+    </style>
 </head>
 <body>
     <!-- Главный блок -->
     <header class="hero">
         <div class="container">
-            <h1>Возвращение</h1> <!-- Надпись "Возвращение" теперь красная -->
+            <h1>Возвращение</h1>
             <p class="slogan">Психологическая поддержка для участников СВО и их семей</p>
             <p>Бесплатная групповая терапия в дистанционном формате</p>
-            <a href="#groups" class="btn">Записаться на терапию</a> <!-- Кнопка теперь красная -->
+            <a href="#" class="btn open-google-form">Записаться на терапию</a>
         </div>
         <div id="progress-bar"></div>        
     </header>
@@ -42,69 +86,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Группы поддержки -->
-    <section id="groups" class="section">
-        <div class="container">
-            <h2 class="blue-title">Группы поддержки</h2>
-            <div class="group-list">
-                <!-- Блок 1 -->
-                <div class="group-item">
-                    <h3>Для тех, кто переживает за близких, находящихся в зоне СВО</h3>
-                    <p>Эта группа предназначена для людей, чьи родственники находятся в зоне боевых действий...</p>
-                    <a href="#" class="btn">Записаться</a>
-                </div>
-                <!-- Блок 3 -->
-                <div class="group-item">
-                    <h3>Для жителей пострадавших регионов (Курская и Белгородская области)</h3>
-                    <p>Специальная группа для жителей регионов, пострадавших от военных действий...</p>
-                    <a href="#" class="btn">Записаться</a>
-                </div>
-                <!-- Блок 5 (перемещен выше) -->
-                <div class="group-item">
-                    <h3>Для семей погибших военнослужащих</h3>
-                    <p>Поддержка для семей, потерявших близких...</p>
-                    <a href="#" class="btn">Записаться</a>
-                </div>
-                <!-- Блок 2 (перемещен ниже) -->
-                <div class="group-item">
-                    <h3>Для семей, чей родственник вернулся с травмой (физической или психологической)</h3>
-                    <p>Поддержка для семей, столкнувшихся с физическими или психологическими травмами...</p>
-                    <a href="#" class="btn">Записаться</a>
-                </div>
-                <!-- Блок 4 -->
-                <div class="group-item">
-                    <h3>Для самих участников СВО, которые вернулись с фронта</h3>
-                    <p>Группа для тех, кто лично прошел через военные действия...</p>
-                    <a href="#" class="btn">Записаться</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Наши психологи -->
-    <section id="psychologists" class="section">
-        <div class="container">
-            <h2 class="blue-title">Наши психологи</h2>
-            <div class="psychologist-list">
-                <div class="psychologist-item">
-                    <img src="https://via.placeholder.com/150" alt="Фото психолога">
-                    <h3 class="red-title">Имя Фамилия</h3>
-                    <p><strong>Специализация:</strong> Работа с травмой</p>
-                    <p><strong>Опыт работы:</strong> 10 лет</p>
-                    <p><strong>Подход:</strong> Важно поддерживать каждого клиента...</p>
-                </div>
-                <div class="psychologist-item">
-                    <img src="https://via.placeholder.com/150" alt="Фото психолога">
-                    <h3 class="red-title">Имя Фамилия</h3>
-                    <p><strong>Специализация:</strong> Адаптация после стресса</p>
-                    <p><strong>Опыт работы:</strong> 8 лет</p>
-                    <p><strong>Подход:</strong> Каждый человек уникален...</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Как проходит терапия -->
     <section id="therapy" class="section">
         <div class="container">
@@ -133,69 +114,109 @@
             </div>
         </div>
     </section>
-
-    <!-- Как записаться -->
-    <section id="signup" class="section">
+     <!-- Наши психологи -->
+     <section id="psychologists" class="section">
         <div class="container">
-            <h2 class="blue-title">Как записаться?</h2>
-            <form action="#" method="POST">
-                <label for="name">Имя (можно псевдоним):</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Электронная почта / Телефон:</label>
-                <input type="text" id="email" name="email" required>
-                <label for="group">Выбор группы:</label>
-                <select id="group" name="group" required>
-                    <option value="">-- Выберите группу --</option>
-                    <option value="group1">Для тех, кто переживает за близких в зоне СВО</option>
-                    <option value="group2">Для семей, чей родственник вернулся с травмой</option>
-                    <option value="group3">Для жителей пострадавших регионов</option>
-                    <option value="group4">Для семей погибших военнослужащих</option>
-                    <option value="group5">Для самих участников СВО, которые вернулись с фронта</option>
-                </select>
-                <button type="submit" class="btn">Отправить заявку</button>
-            </form>
-            <p>Есть вопросы? Напишите нам: <a href="mailto:info@vozvrashenie.org">info@vozvrashenie.org</a></p>
+            <h2 class="blue-title">Наши психологи</h2>
+            <div class="psychologist-list">
+                <div class="psychologist-item">
+                    <img src="anna_puzikova.png" alt="Фото психолога">
+                    <h3 class="red-title">Анна Пузикова</h3>
+                    <p><strong>Специализация:</strong> Клинический психолог, КПТ-терапевт и EMDR терапевт</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Группы поддержки -->
+    <section id="groups" class="section">
+        <div class="container">
+            <h2 class="blue-title">Группы поддержки</h2>
+            <div class="group-list">
+                <div class="group-item">
+                    <h3>Для тех, кто переживает за близких, находящихся в зоне СВО</h3>
+                    <p>Эта группа предназначена для людей, чьи родственники находятся в зоне боевых действий...</p>
+                    <a href="#" class="btn open-google-form">Записаться</a>
+                </div>
+                <div class="group-item">
+                    <h3>Для жителей пострадавших регионов (Курская и Белгородская области)</h3>
+                    <p>Специальная группа для жителей регионов, пострадавших от военных действий...</p>
+                    <a href="#" class="btn open-google-form">Записаться</a>
+                </div>
+                <div class="group-item">
+                    <h3>Для семей погибших военнослужащих</h3>
+                    <p>Поддержка для семей, потерявших близких...</p>
+                    <a href="#" class="btn open-google-form">Записаться</a>
+                </div>
+                <div class="group-item">
+                    <h3>Для семей, чей родственник вернулся с травмой (физической или психологической)</h3>
+                    <p>Поддержка для семей, столкнувшихся с физическими или психологическими травмами...</p>
+                    <a href="#" class="btn open-google-form">Записаться</a>
+                </div>
+                <div class="group-item">
+                    <h3>Для самих участников СВО, которые вернулись с фронта</h3>
+                    <p>Группа для тех, кто лично прошел через военные действия...</p>
+                    <a href="#" class="btn open-google-form">Записаться</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Модальное окно для записи -->
-    <div id="modal" class="modal hidden">
+    <!-- Модальное окно для Google Form -->
+    <div id="googleFormModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Записаться на группу</h2>
-            <form action="#" method="POST">
-                <label for="name">Имя (можно псевдоним):</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Электронная почта / Телефон:</label>
-                <input type="text" id="email" name="email" required>
-                <label for="group">Выбор группы:</label>
-                <select id="group" name="group" required>
-                    <option value="">-- Выберите группу --</option>
-                    <option value="group1">Для тех, кто переживает за близких в зоне СВО</option>
-                    <option value="group2">Для семей, чей родственник вернулся с травмой</option>
-                    <option value="group3">Для жителей пострадавших регионов</option>
-                    <option value="group4">Для семей погибших военнослужащих</option>
-                </select>
-                <button type="submit" class="btn">Отправить заявку</button>
-            </form>
+            <h2>Заполните форму записи</h2>
+            <iframe 
+                class="google-form-iframe" 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSfP_t0QElOZE2gqv30k9XX-w0cSGa6NA1W9oENSuPPj6edXdw/viewform?embedded=true" width="640" height="957" frameborder="0" marginheight="0" marginwidth="0">Загрузка…" 
+                frameborder="0">
+                Загрузка…
+            </iframe>
         </div>
     </div>
-     <!-- Подвал -->
+
+    <!-- Подвал -->
     <footer>
         <div class="container">
-            <p>© 2023 Возвращение. Все права защищены.</p>
+            <p>© 2025 Возвращение. Все права защищены.</p>
             <p><a href="#">Политика конфиденциальности</a></p>
+            <p>Почта для связи: proektvozvrashenie@yandex.ru</p>
         </div>
-        <!-- Социальные кнопки -->
         <div class="social-links">
             <a href="#" class="social-btn" target="_blank">
-                <i class="fab fa-vk"></i> <!-- Иконка VK -->
+                <i class="fab fa-vk"></i>
             </a>
             <a href="#" class="social-btn" target="_blank">
-                <i class="fab fa-telegram"></i> <!-- Иконка Telegram -->
+                <i class="fab fa-telegram"></i>
             </a>
-            </div>
+        </div>
     </footer>
-    <script src="script.js"></script>
+
+    <script>
+        // JavaScript для управления модальным окном
+        const googleFormModal = document.getElementById('googleFormModal');
+        const openGoogleFormBtns = document.querySelectorAll('.open-google-form');
+        const closeGoogleFormBtn = document.querySelector('#googleFormModal .close');
+
+        function openGoogleFormModal() {
+            googleFormModal.style.display = 'flex';
+        }
+
+        function closeGoogleFormModal() {
+            googleFormModal.style.display = 'none';
+        }
+
+        openGoogleFormBtns.forEach(button => {
+            button.addEventListener('click', openGoogleFormModal);
+        });
+
+        closeGoogleFormBtn.addEventListener('click', closeGoogleFormModal);
+
+        window.addEventListener('click', (event) => {
+            if (event.target === googleFormModal) {
+                closeGoogleFormModal();
+            }
+        });
+    </script>
 </body>
 </html>
